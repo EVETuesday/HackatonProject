@@ -56,6 +56,7 @@ namespace WpfApp6.Windows
             if (lblTeacher.Text != "Учитель не выбранн")
             {
                 WordData.Muchitel += "; " + lblTeacher.Text;
+                WordData.Signer += lblTeacher.Text;
             }
             
             
