@@ -15,6 +15,9 @@ VerticalAlignment="Center"
 Margin="40 0 0 200"
   Background="White"
   CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="btnComplex"
                         Content=""
