@@ -32,6 +32,7 @@ namespace WpfApp6.Classes
             Word.Application app = null;
             try
             {
+                students = students.OrderBy(x => x).ToArray();
                 app = new Word.Application();
                 Object file = _fileInfo.FullName;
                 Object missing = Type.Missing;

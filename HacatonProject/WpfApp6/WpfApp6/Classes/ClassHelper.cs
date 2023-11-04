@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WpfApp6.Classes;
 namespace WpfApp6.Classes
 {
@@ -59,6 +60,11 @@ namespace WpfApp6.Classes
                 var helper = new WordInserter(VedomostFilePath);
                 string[] strings = WordData.Signer.Split(' ');
                 string fio = strings[0] + " " + strings[1].Substring(0, 1) + ". " + strings[2].Substring(0, 1) + ". ";
+                string fio2 = String.Empty;
+                if (strings.Length > 4) 
+                {
+                    fio2 = strings[3] + " " + strings[4].Substring(0, 1) + ". " + strings[5].Substring(0, 1) + ". " + "\\__________";
+                }
                 var items = new Dictionary<string, string>()
             {
                 {"<Discipline_name>",  WordData.Discipline},
@@ -67,7 +73,8 @@ namespace WpfApp6.Classes
                 {"<Date>", DateTime.Now.ToString("dd.MM.yyyy") },
                 {"<Speciality_name>", WordData.Specialtity },
                 {"<Teacher_name>", WordData.Muchitel },
-                {"<Signer>", fio}
+                {"<Signer>", fio + "\\__________"},
+                {"<Signer2>", fio2}
             };
 
 

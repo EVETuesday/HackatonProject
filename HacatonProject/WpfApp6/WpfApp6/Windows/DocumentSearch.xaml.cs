@@ -40,7 +40,7 @@ namespace WpfApp6.Windows
                     tbDox.Text = lynxKitten[0].Substring(0, lynxKitten[0].Length-1);
                     tbVed.Text = lynxKitten[1].Substring(0, lynxKitten[1].Length-1);
 
-                    StudentsFilePath = tbDox.Text + @"\\Список студентов.xlsx";
+                    StudentsFilePath = tbDox.Text + @"\\ГлавныеСпискиГрупп.xlsx";
                     TeacherFilePath = tbDox.Text + @"\\Преподаватели.xlsx";
                     TarificationFilePath = tbDox.Text + @"\\Предметы.xlsx";
 
@@ -56,7 +56,7 @@ namespace WpfApp6.Windows
             folderBrowser.ShowDialog();
             tbDox.Text = folderBrowser.SelectedPath;
 
-            StudentsFilePath = tbDox.Text + @"\\Список студентов.xlsx";
+            StudentsFilePath = tbDox.Text + @"\\ГлавныеСпискиГрупп.xlsx";
             TeacherFilePath = tbDox.Text + @"\\Преподаватели.xlsx";
             TarificationFilePath = tbDox.Text + @"\\Предметы.xlsx";
             

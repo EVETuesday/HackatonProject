@@ -51,17 +51,19 @@ namespace WpfApp6.Windows
             }
             if (lblDiscipline.Text != "Дисциплина не выбранна")
             {
-                WordData.Discipline += ";\n" + lblDiscipline.Text;
+                WordData.Discipline += "; " + lblDiscipline.Text;
             }
             if (lblTeacher.Text != "Учитель не выбранн")
             {
                 WordData.Muchitel += "; " + lblTeacher.Text;
+                WordData.Signer += lblTeacher.Text;
             }
             
             
             switch (NuberVedomost)
             {
                 case 1:
+                    WordData.Discipline += " (Комплексная ведомость)";
                     VedomostFilePath = Directory.GetCurrentDirectory().Substring(0, Directory.GetCurrentDirectory().Length - 10) + @"\\Docs\ZVedomost.doc";
                   ClassHelper.TextInput();
                     break;
@@ -70,6 +72,7 @@ namespace WpfApp6.Windows
                     ClassHelper.TextInput();
                     break;
                 case 3:
+                    WordData.Discipline += " (Комплексная экзамен)";
                     VedomostFilePath = Directory.GetCurrentDirectory().Substring(0, Directory.GetCurrentDirectory().Length - 10) + @"\\Docs\EVedomost.doc";
                     ClassHelper.TextInput();
                     break;

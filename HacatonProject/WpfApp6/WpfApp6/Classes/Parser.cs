@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 using static WpfApp6.Classes.ClassHelper;
 
 namespace WpfApp6.Classes
@@ -39,7 +39,7 @@ namespace WpfApp6.Classes
                             student.FullName += name + " ";
                     }
 
-                    for (int j = 0; j < groupes.Count; j++)
+                    for (int j = 1; j < groupes.Count; j++)
                     {
 
                         string[] strings = groupes[j].TitleGroupe.Split(' ');
@@ -72,6 +72,8 @@ namespace WpfApp6.Classes
                         if (group == group1)
                         {
                             student.Groupe = groupes[j].IdGroupe;
+                            j = groupes.Count;
+
                         }
                     }
                     student.UnderGroupe = "" + worksheet.Cells[i, 1].Value; 
@@ -127,6 +129,7 @@ namespace WpfApp6.Classes
             Teacher teacher1 = new Teacher();
             for (int i = 0; i < rows + 1; i++)
             {
+
                 Teacher teacher = new Teacher();
                 teacher.IdTeacher = id;
                 id++;
@@ -143,6 +146,7 @@ namespace WpfApp6.Classes
                 }
                 teachers.Add(teacher);
             }
+
         }
         public static void TestConnection1()
         {
@@ -200,13 +204,39 @@ namespace WpfApp6.Classes
                 bool check = true;
                 for (int j = 0; j < groupes.Count; j++)
                 {
-                    string[] strings = ("" + worksheet.Cells[i, 0].Value).Trim().Split(' ');
-                    if (("" + worksheet.Cells[i, 0].Value).Trim() == groupes[j].TitleGroupe || strings[0]== "ВЫПУСКНЫЕ")
+                    string[] strings = groupes[j].TitleGroupe.Split(' ');
+                    string group = strings[0].Substring(1, strings[0].Length - 1);
+
+                    if (group.Substring(0, 1) == "-")
                     {
-                        check = false;
+                        group = group.Substring(1, group.Length - 1);
+                    }
+                    if (group.Substring(group.Length - 2, 2) == "ВБ")
+                    {
+                        group = group.Substring(0, group.Length - 2);
+                    }
+                    string group1 = null;
+                    if ("" + worksheet.Cells[i, 0].Value != "" && "" + worksheet.Cells[i, 0].Value != "0")
+                    {
+                        string[] strings1 = ("" + worksheet.Cells[i, 0].Value).Split(' ');
+                        group1 = strings1[0].Substring(1, strings1[0].Length - 1);
+                        if (group1.Substring(0, 1) == "-")
+                        {
+                            group1 = group1.Substring(1, group1.Length - 1);
+                        }
+                        if (group1.Substring(group1.Length - 2, 2) == "ВБ")
+                        {
+                            group1 = group1.Substring(0, group1.Length - 2);
+                        }
                     }
 
 
+                    if (group == group1)
+                    {
+
+                    check = false;
+                    }
+                    
                 }
                 if (check)
                 {
