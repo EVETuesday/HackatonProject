@@ -63,7 +63,7 @@ namespace WpfApp6.Classes
                 string fio2 = String.Empty;
                 if (strings.Length > 4) 
                 {
-                    fio2 = strings[3] + " " + strings[4].Substring(0, 1) + ". " + strings[5].Substring(0, 1) + ". " + "\\__________";
+                    fio2 = strings[3] + " " + strings[4].Substring(0, 1) + ". " + strings[5].Substring(0, 1) + ". " + "/__________";
                 }
                 var items = new Dictionary<string, string>()
             {
@@ -73,7 +73,7 @@ namespace WpfApp6.Classes
                 {"<Date>", DateTime.Now.ToString("dd.MM.yyyy") },
                 {"<Speciality_name>", WordData.Specialtity },
                 {"<Teacher_name>", WordData.Muchitel },
-                {"<Signer>", fio + "\\__________"},
+                {"<Signer>", fio + "/__________"},
                 {"<Signer2>", fio2}
             };
 

@@ -75,7 +75,7 @@ namespace WpfApp6.Pages
                 }
                 
                 List<string> strings = new List<string>();
-                foreach (Student name in students.Where(i => i.Groupe == selectedProduct.IdGroupe))
+                foreach (Student name in students.Where(i => i.Groupe == selectedProduct.IdGroupe).Where(i => string.IsNullOrEmpty(i.TheOrderOfTheAcademyVacation) && string.IsNullOrEmpty(i.OrderOfExpulsion) || !string.IsNullOrEmpty(i.RestorationOrder)))
                 {
                     if(name.ReasonExpulsion != null && name.ReasonVacation != null)
                     {

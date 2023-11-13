@@ -49,6 +49,7 @@ namespace WpfApp6.Pages
             {
                 dg.ItemsSource = students.Where(i => i.Groupe == WordData.IdGroup);
                 studentsData= new ObservableCollection<Student>(students.Where(i => i.Groupe == WordData.IdGroup));
+                dg.ItemsSource = studentsData.Where(i => string.IsNullOrEmpty(i.TheOrderOfTheAcademyVacation) && string.IsNullOrEmpty(i.OrderOfExpulsion) || !string.IsNullOrEmpty(i.RestorationOrder));
                 dg.IsReadOnly = true;
             }
             
@@ -236,7 +237,7 @@ namespace WpfApp6.Pages
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            dg.ItemsSource = studentsData.Where(i=>i.FullName.ToLower().Contains(tbSearch.Text.ToLower()));
+            dg.ItemsSource = studentsData.Where(i=>i.FullName.ToLower().Contains(tbSearch.Text.ToLower())).Where(i => string.IsNullOrEmpty(i.TheOrderOfTheAcademyVacation) && string.IsNullOrEmpty(i.OrderOfExpulsion) || !string.IsNullOrEmpty(i.RestorationOrder));
             dg.IsReadOnly = true;
             BtnDel.IsEnabled = false;
 
